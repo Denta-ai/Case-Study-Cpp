@@ -1,0 +1,15 @@
+Create a program where a restaurant has the following menu:
+1. Chicken Grilled Rice: 18000
+2. Nasi Bakar Cob : 20000
+3. Nasi Bakar MIX : 25000
+4. Squid Grilled Rice: 30000
+5. Grilled Fried Rice: 25000
+
+The restaurant provides delivery order services for customers whose homes are more than
+4 KM will be charged a postage fee of IDR 20,000, if it is less than that distance, it will be charged
+postage costs as much as IDR 8000. If the total purchase is more than IDR 40000 will get a discounted fee
+IDR 4000 postage. If the total purchase exceeds IDR 100000, a IDR 9000 postage discount will be given and a 25% discount. 
+And if the total purchase exceeds IDR 150000 then it will
+given a discount on shipping costs of IDR 12000 and a discount of 35%.
+
+>>The output that comes out is expected in the form of a payment slip.
