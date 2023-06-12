@@ -1,6 +1,16 @@
-At a gas station, you want to make a program that can calculate the total price
-which will be issued for two types of gasoline, namely pertalite and Pertamax.
-Pertalite has a price of Rp. 7,000/liter, while Pertamax is Rp. 9,000/liter. 
-Output from the program is expected to be in the form of a receipt that has buyer details
 
->>(total liters, type gasoline, customer name, total price)
+English:
+  At a gas station, you want to make a program that can calculate the total price
+  which will be issued for two types of gasoline, namely pertalite and Pertamax.
+  Pertalite has a price of Rp. 7,000/liter, while Pertamax is Rp. 9,000/liter. 
+  Output from the program is expected to be in the form of a receipt that has buyer details
+
+  >>(total liters, type gasoline, customer name, total price)
+
+Indonesia:
+  Di SPBU, Anda ingin membuat program yang dapat menghitung harga total
+  yang akan dikeluarkan untuk dua jenis bensin yaitu pertalite dan pertamax.
+  Pertalite memiliki harga Rp. 7.000/liter, sedangkan Pertamax Rp. 9.000/liter.
+  Keluaran dari program ini diharapkan berupa kuitansi yang memiliki rincian pembeli
+
+  >>(total liter, jenis bensin, nama pelanggan, total harga)
