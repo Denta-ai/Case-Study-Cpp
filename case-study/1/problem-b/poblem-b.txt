@@ -1,0 +1,16 @@
+
+English:
+  In city X there is a chicken shop that wants to make a program that will later get it calculating the total price,
+  that will be issued for the selected menu.
+  The chicken shop has a menu including fried chicken, priced at IDR 17,000 and grilled chicken, at a price of IDR 21,000. 
+  Then, if the purchase amount exceeds IDR 45000, it will be given 10% discount
+
+  >>The output of the program is expected to be in the form of a payment receipt
+
+Indonesia:
+  Di kota X ada toko ayam yang ingin membuat program yang nantinya dapat menghitung total harga,
+  yang akan dikeluarkan untuk menu yang dipilih.
+  Warung ayam tersebut memiliki menu antara lain ayam goreng dengan harga Rp 17.000 dan ayam bakar dengan harga Rp 21.000.
+  Kemudian, jika jumlah pembelian melebihi Rp45.000, maka akan diberikan diskon 10%.
+
+  >> Keluaran dari program ini diharapkan berupa bukti pembayaran (kuitansi)
