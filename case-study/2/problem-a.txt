@@ -1,16 +1,36 @@
-Create a program where a restaurant has the following menu:
-1. Geprek chicken : IDR 21000
-2. Fried chicken: IDR 17000
-3. Fried shrimp: IDR 19000
-4. Fried squid : IDR 20000
-5. Grilled chicken: IDR 25000
 
-The restaurant provides delivery order services, for customers whose homes are less than
-3KM will be given a postage fee of 15,000, if it is more than that, a postage fee of 15,000 will be charged
-25000. If the total purchase is more than 25000, you will receive a discount on shipping costs of 3000.
-If the total purchase exceeds 50000, a discount of 5000 dan will be given
-discount as much as 15%. And if the total purchase exceeds 150000, a discount will be given
-postage of 8000 and a discount of 35%. 
+English:
+  Create a program where a restaurant has the following menu:
+  1. Geprek chicken : IDR 21000
+  2. Fried chicken: IDR 17000
+  3. Fried shrimp: IDR 19000
+  4. Fried squid : IDR 20000
+  5. Grilled chicken: IDR 25000
 
->> Implement the loop into the program.
->> The output that comes out is expected in the form of a payment slip.
+  The restaurant provides delivery order services, for customers whose homes are less than
+  3KM will be given a postage fee of 15,000, if it is more than that, a postage fee of 15,000 will be charged
+  25000. If the total purchase is more than 25000, you will receive a discount on shipping costs of 3000.
+  If the total purchase exceeds 50000, a discount of 5000 dan will be given
+  discount as much as 15%. And if the total purchase exceeds 150000, a discount will be given
+  postage of 8000 and a discount of 35%. 
+
+  >> Implement the loop into the program.
+  >> The output that comes out is expected in the form of a payment slip.
+
+Indonesia:
+  Buat program di mana restoran memiliki menu berikut:
+  1. Ayam geprek : Rp 21.000
+  2. Ayam goreng : Rp 17000
+  3. Udang goreng : Rp 19.000
+  4. Cumi goreng : Rp 20.000
+  5. Ayam bakar : Rp 25.000
+
+  Restoran menyediakan layanan pesan antar, untuk pelanggan yang rumahnya kurang dari
+  3KM akan dikenakan ongkos kirim 15.000, jika lebih dari itu akan dikenakan ongkos kirim 15.000
+  25.000. Jika total pembelian lebih dari 25.000, Anda akan mendapatkan diskon biaya kirim sebesar 3.000.
+  Jika total pembelian melebihi 50000 akan diberikan potongan harga sebesar 5000 dan
+  diskon sebanyak 15%. Dan jika total pembelian melebihi 150.000, akan diberikan potongan harga
+  ongkos kirim 8000 dan diskon 35%.
+
+  >> Terapkan loop ke dalam program.
+  >> Output yang keluar diharapkan berupa slip pembayaran.

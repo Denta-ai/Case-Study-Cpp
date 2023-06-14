@@ -1,15 +1,34 @@
-Create a program where a restaurant has the following menu:
-1. Chicken Grilled Rice: 18000
-2. Nasi Bakar Cob : 20000
-3. Nasi Bakar MIX : 25000
-4. Squid Grilled Rice: 30000
-5. Grilled Fried Rice: 25000
 
-The restaurant provides delivery order services for customers whose homes are more than
-4 KM will be charged a postage fee of IDR 20,000, if it is less than that distance, it will be charged
-postage costs as much as IDR 8000. If the total purchase is more than IDR 40000 will get a discounted fee
-IDR 4000 postage. If the total purchase exceeds IDR 100000, a IDR 9000 postage discount will be given and a 25% discount. 
-And if the total purchase exceeds IDR 150000 then it will
-given a discount on shipping costs of IDR 12000 and a discount of 35%.
+English:
+  Create a program where a restaurant has the following menu:
+  1. Chicken Grilled Rice: 18000
+  2. Nasi Bakar Cob : 20000
+  3. Nasi Bakar MIX : 25000
+  4. Squid Grilled Rice: 30000
+  5. Grilled Fried Rice: 25000
 
->>The output that comes out is expected in the form of a payment slip.
+  The restaurant provides delivery order services for customers whose homes are more than
+  4 KM will be charged a postage fee of IDR 20,000, if it is less than that distance, it will be charged
+  postage costs as much as IDR 8000. If the total purchase is more than IDR 40000 will get a discounted fee
+  IDR 4000 postage. If the total purchase exceeds IDR 100000, a IDR 9000 postage discount will be given and a 25% discount. 
+  And if the total purchase exceeds IDR 150000 then it will
+  given a discount on shipping costs of IDR 12000 and a discount of 35%.
+
+  >>The output that comes out is expected in the form of a payment slip.
+
+Indonesia:
+  Buat program di mana restoran memiliki menu berikut:
+  1. Nasi Bakar Ayam : 18000
+  2. Nasi Bakar Tongkol : 20000
+  3. Nasi Bakar MIX : 25000
+  4. Nasi Bakar Cumi : 30000
+  5. Nasi Goreng Bakar : 25000
+
+  Restoran tersebut menyediakan layanan delivery order bagi pelanggan yang rumahnya lebih dari
+  4 KM akan dikenakan biaya ongkos kirim sebesar Rp 20.000, jika kurang dari jarak tersebut akan dikenakan biaya
+  ongkos kirim sebesar Rp 8000. Jika total pembelian lebih dari Rp 40000 akan mendapatkan potongan biaya
+  ongkos kirim Rp 4000. Jika total pembelian melebihi Rp 100.000, akan diberikan diskon ongkos kirim Rp 9.000 dan diskon 25%.
+  Dan jika total pembelian melebihi IDR 150000 maka akan
+  diberikan potongan biaya pengiriman sebesar Rp 12.000 dan potongan sebesar 35%.
+
+  >>Output yang keluar diharapkan berupa slip pembayaran.
