@@ -2,6 +2,7 @@
 
 language use (INA/EN)
 INDONESIA-ENGLISH
+Difficulty: Easy-Medium
 
 English:
 - case study to practice C++ skills with given some problem too solve.
