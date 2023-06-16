@@ -25,17 +25,22 @@ class RestaurantReceipts {
   public:
     RestaurantReceipts();
     void acceptInputUser();
-    void calculatePrice();
+    void calculatePriceBeforeDiscount();
     void customerDistance();
     void priceDiscount();
     void printReceipt();
+    void storedDataList();
+    void firstOrder();
   private:
     std::array<std::string, 5> menu;
     std::array<double, 5> menuPrice;
+    std::vector<int>priceBeforeDiscount;
+    std::vector<std::string>storedOrderList;
     int amount;
     int selectedMenu;
     double totalPrice;
     int distance;
+    int count;
 };
 
 RestaurantReceipts::RestaurantReceipts() 
@@ -43,6 +48,7 @@ RestaurantReceipts::RestaurantReceipts()
           "3.Fried shrimp\t\t IDR 19000", "4.Fried squid\t\t IDR 20000", "5.Grilled chicken\t IDR 25000"},
     menuPrice{21000, 17000, 19000, 20000, 25000} {}
 
+// INPUT USER AWAL
 void RestaurantReceipts::acceptInputUser(){
   std::cout << "Menu:" << std::endl;
   for (int i = 0; i < size(menu); i++){
@@ -53,9 +59,25 @@ void RestaurantReceipts::acceptInputUser(){
   
 }
 
-void RestaurantReceipts::calculatePrice(){
+//HITUNG TOTAL HARGA AWAL
+void RestaurantReceipts::calculatePriceBeforeDiscount(){
   totalPrice = menuPrice[selectedMenu-1] * amount;
+}
+
+//OUTPUT PESANAN AWAL SEMENTARA
+void RestaurantReceipts::firstOrder(){
+  std::cout << "You order " << amount << " of " << menu[selectedMenu-1] << std::endl;
+  std::cout << "Total price: " << totalPrice;
+}
+
+//SIMPAN SEMUA DATA PILIHAN USER
+void RestaurantReceipts::storedDataList(){
+  storedOrderList[count] = menu[selectedMenu-1];
+  priceBeforeDiscount[count] = totalPrice;
   std::cout << "Your order: " << std::endl;
+  for (int i = 0; i < 5; i++){
+    
+  }
   std::cout << menu[selectedMenu-1] << std::endl;
   std::cout << "Total price: " << totalPrice << std::endl;
 }
@@ -90,24 +112,28 @@ void RestaurantReceipts::customerDistance(){
 void RestaurantReceipts::printReceipt(){
   std::cout << "Receipts" << std::endl;
   std::cout << "Your choice:" << std::endl;
-  std::cout << menu[selectedMenu-1] << std::endl;
-  std::cout << "total price: " << totalPrice << std::endl;
+  for (int i = 0; i < count; i++){
+    std::cout << storedOrderList[i] << std::endl;
+    std::cout << "total price: " << priceBeforeDiscount[i] << std::endl;
+  }
 
 }
 
 int main(){
   char repeatOrder = 'y';
   RestaurantReceipts receipts;
+
   while(repeatOrder == 'y'){
     receipts.acceptInputUser();
-    receipts.calculatePrice();
-    receipts.priceDiscount();
+    receipts.calculatePriceBeforeDiscount();
+    receipts.firstOrder();
     std::cout << "You want to order again? (y/n): "; std::cin >> repeatOrder;
+    receipts.storedDataList();
     if (repeatOrder == 'n'){
+      receipts.printReceipt();
       break;
     }
   }
-  receipts.customerDistance();
-  receipts.printReceipt();
+  // receipts.customerDistance();
   return 0;
 }
