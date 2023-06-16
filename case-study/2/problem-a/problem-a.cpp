@@ -40,19 +40,19 @@ class RestaurantReceipts {
     int selectedMenu;
     double totalPrice;
     int distance;
-    int count;
+    const int count = 5;
 };
 
 RestaurantReceipts::RestaurantReceipts() 
-  : menu{"1.Greprek Chicken\t IDR 21000", "2.Fried chicken\t\t IDR 17000", 
-          "3.Fried shrimp\t\t IDR 19000", "4.Fried squid\t\t IDR 20000", "5.Grilled chicken\t IDR 25000"},
+  : menu{"Greprek Chicken\t IDR 21000", "Fried chicken\t\t IDR 17000", 
+          "Fried shrimp\t\t IDR 19000", "Fried squid\t\t IDR 20000", "Grilled chicken\t IDR 25000"},
     menuPrice{21000, 17000, 19000, 20000, 25000} {}
 
 // INPUT USER AWAL
 void RestaurantReceipts::acceptInputUser(){
   std::cout << "Menu:" << std::endl;
   for (int i = 0; i < size(menu); i++){
-    std::cout << menu[i] << std::endl;
+    std::cout << i+1 << menu[i] << std::endl;
   }
   std::cout << "Input your choice: "; std::cin >> selectedMenu;
   std::cout << "Input how many order: "; std::cin >> amount;
@@ -67,57 +67,47 @@ void RestaurantReceipts::calculatePriceBeforeDiscount(){
 //OUTPUT PESANAN AWAL SEMENTARA
 void RestaurantReceipts::firstOrder(){
   std::cout << "You order " << amount << " of " << menu[selectedMenu-1] << std::endl;
-  std::cout << "Total price: " << totalPrice;
+  std::cout << "Total price: " << totalPrice << std::endl;
 }
 
-//SIMPAN SEMUA DATA PILIHAN USER
+//SIMPAN SEMUA DATA PILIHAN AWAL USER
 void RestaurantReceipts::storedDataList(){
   storedOrderList[count] = menu[selectedMenu-1];
   priceBeforeDiscount[count] = totalPrice;
   std::cout << "Your order: " << std::endl;
   for (int i = 0; i < 5; i++){
-    
+    std::cout << i+1 << "x| " <<  menu[i] << std::endl;
+    std::cout << "Total price: " << menuPrice[i] * amount << std::endl;
   }
-  std::cout << menu[selectedMenu-1] << std::endl;
-  std::cout << "Total price: " << totalPrice << std::endl;
+  
 }
 
-void RestaurantReceipts::priceDiscount(){
-  if (totalPrice > 25000 && totalPrice <= 50000){
-    totalPrice -= 3000;
-  }
-  if (totalPrice > 50000 && totalPrice <= 150000){
-    int temp = totalPrice;
-    temp *= 0.15;
-    totalPrice -= temp;
-    totalPrice -= 5000;
-  }
-  if (totalPrice > 150000){
-    int temp = totalPrice;
-    temp *= 0.35;
-    totalPrice -= temp;
-    totalPrice -= 8000;
-  }
-}
+// void RestaurantReceipts::priceDiscount(){
+//   if (totalPrice > 25000 && totalPrice <= 50000){
+//     totalPrice -= 3000;
+//   }
+//   if (totalPrice > 50000 && totalPrice <= 150000){
+//     int temp = totalPrice;
+//     temp *= 0.15;
+//     totalPrice -= temp;
+//     totalPrice -= 5000;
+//   }
+//   if (totalPrice > 150000){
+//     int temp = totalPrice;
+//     temp *= 0.35;
+//     totalPrice -= temp;
+//     totalPrice -= 8000;
+//   }
+// }
 
-void RestaurantReceipts::customerDistance(){
-  std::cout << "Input your distance: "; std::cin >> distance;
-  if (distance <= 3){
-    totalPrice += 15000;
-  }else {
-    totalPrice += 25000;
-  }
-}
-
-void RestaurantReceipts::printReceipt(){
-  std::cout << "Receipts" << std::endl;
-  std::cout << "Your choice:" << std::endl;
-  for (int i = 0; i < count; i++){
-    std::cout << storedOrderList[i] << std::endl;
-    std::cout << "total price: " << priceBeforeDiscount[i] << std::endl;
-  }
-
-}
+// void RestaurantReceipts::customerDistance(){
+//   std::cout << "Input your distance: "; std::cin >> distance;
+//   if (distance <= 3){
+//     totalPrice += 15000;
+//   }else {
+//     totalPrice += 25000;
+//   }
+// }
 
 int main(){
   char repeatOrder = 'y';
@@ -127,10 +117,11 @@ int main(){
     receipts.acceptInputUser();
     receipts.calculatePriceBeforeDiscount();
     receipts.firstOrder();
+    // receipts.storedDataList();
     std::cout << "You want to order again? (y/n): "; std::cin >> repeatOrder;
-    receipts.storedDataList();
+    // receipts.storedDataList();
     if (repeatOrder == 'n'){
-      receipts.printReceipt();
+      // receipts.storedDataList();
       break;
     }
   }
