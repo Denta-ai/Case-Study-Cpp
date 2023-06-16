@@ -28,6 +28,7 @@ class RestaurantReceipts {
     void calculatePrice();
     void customerDistance();
     void priceDiscount();
+    void printReceipt();
   private:
     std::array<std::string, 5> menu;
     std::array<double, 5> menuPrice;
@@ -55,7 +56,7 @@ void RestaurantReceipts::acceptInputUser(){
 void RestaurantReceipts::calculatePrice(){
   totalPrice = menuPrice[selectedMenu-1] * amount;
   std::cout << "Your order: " << std::endl;
-  std::cout << menu[selectedMenu] << std::endl;
+  std::cout << menu[selectedMenu-1] << std::endl;
   std::cout << "Total price: " << totalPrice << std::endl;
 }
 
@@ -78,11 +79,20 @@ void RestaurantReceipts::priceDiscount(){
 }
 
 void RestaurantReceipts::customerDistance(){
+  std::cout << "Input your distance: "; std::cin >> distance;
   if (distance <= 3){
     totalPrice += 15000;
   }else {
     totalPrice += 25000;
   }
+}
+
+void RestaurantReceipts::printReceipt(){
+  std::cout << "Receipts" << std::endl;
+  std::cout << "Your choice:" << std::endl;
+  std::cout << menu[selectedMenu-1] << std::endl;
+  std::cout << "total price: " << totalPrice << std::endl;
+
 }
 
 int main(){
@@ -91,10 +101,13 @@ int main(){
   while(repeatOrder == 'y'){
     receipts.acceptInputUser();
     receipts.calculatePrice();
+    receipts.priceDiscount();
     std::cout << "You want to order again? (y/n): "; std::cin >> repeatOrder;
     if (repeatOrder == 'n'){
       break;
     }
   }
+  receipts.customerDistance();
+  receipts.printReceipt();
   return 0;
 }
