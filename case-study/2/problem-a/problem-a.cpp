@@ -1,130 +1,83 @@
-// English:
-//   Create a program where a restaurant has the following menu:
-//   1. Geprek chicken : IDR 21000
-//   2. Fried chicken: IDR 17000
-//   3. Fried shrimp: IDR 19000
-//   4. Fried squid : IDR 20000
-//   5. Grilled chicken: IDR 25000
-
-//   The restaurant provides delivery order services, for customers whose homes are less than
-//   3KM will be given a postage fee of 15,000, if it is more than that, a postage fee will be charged
-//   25000. If the total purchase is more than 25000, you will receive a discount on shipping costs of 3000.
-//   If the total purchase exceeds 50000, a discount of shipping 5000 dan will be given
-//   discount as much as 15%. And if the total purchase exceeds 150000, a discount will be given
-//   shipping of 8000 and a discount of 35%. 
-
-//   >> Implement the loop into the program.
-//   >> The output that comes out is expected in the form of a payment slip.
-
 #include <iostream>
-#include <string>
-#include <array>
-#include <vector>
 
-class RestaurantReceipts {
-  public:
-    RestaurantReceipts();
-    void acceptInputUser();
-    void calculatePriceBeforeDiscount();
-    void customerDistance();
-    void priceDiscount();
-    void printReceipt();
-    void storedDataList();
-    void firstOrder();
-  private:
-    std::array<std::string, 5> menu;
-    std::array<double, 5> menuPrice;
-    std::vector<int>priceBeforeDiscount;
-    std::vector<std::string>storedOrderList;
-    int amount;
-    int selectedMenu;
-    double totalPrice;
-    int distance;
-    const int count = 5;
+struct data {
+    int choice, amount, userRange;
+    std::string menuList[5] = {"Ayam geprek : Rp 21.000", "Ayam goreng : Rp 17.000", "Udang goreng : Rp 19.000", 
+                            "Cumi goreng : 20.000", "Ayam bakar : Rp25.000"};
+    int menuPrice[5] = {21000, 17000, 19000, 20000, 25000};
+    int deliveryFee[2] = {15000,25000};
+    int discountDelivery[3] = {3000,5000,8000};
+    float discountCost[2] = {0.15,0.35};
+    int smallDiscount = 0, bigDiscount = 0;
+    int firstCost = 0, finalCost = 0;
 };
 
-RestaurantReceipts::RestaurantReceipts() 
-  : menu{"Greprek Chicken\t IDR 21000", "Fried chicken\t\t IDR 17000", 
-          "Fried shrimp\t\t IDR 19000", "Fried squid\t\t IDR 20000", "Grilled chicken\t IDR 25000"},
-    menuPrice{21000, 17000, 19000, 20000, 25000} {}
+void outputMenuList(data& dt){
+    int menuAmount = 5;
+    std::cout << "Menu Rumah Makan: " << std::endl;
+    for (int i = 0; i < menuAmount; i++){
+        std::cout << i+1 << "." << dt.menuList[i] << std::endl; 
+    }
+}
 
-// INPUT USER AWAL
-void RestaurantReceipts::acceptInputUser(){
-  std::cout << "Menu:" << std::endl;
-  for (int i = 0; i < size(menu); i++){
-    std::cout << i+1 << menu[i] << std::endl;
+void inputUserData(data& dt){
+    std::cout << "Masukan pilihan menu = "; std::cin >> dt.choice;
+    std::cout << "Jumlah yang diinginkan = "; std::cin >> dt.amount;
+    std::cout << "Jarak rumah = "; std::cin >> dt.userRange;
+    std::cout << std::endl;
+}
+
+void countPrice(data& dt){
+    dt.firstCost = dt.menuPrice[dt.choice-1]*dt.amount;
+    dt.finalCost = dt.menuPrice[dt.choice-1]*dt.amount;
+}
+
+void checkUserRangeAndCountFinalPrice(data& dt){
+    int minRange = 3;
+    if (dt.userRange <= minRange){
+        dt.finalCost += dt.deliveryFee[0];
+    }
+    if (dt.userRange > minRange){
+        if (dt.finalCost >= 50000 && dt.finalCost < 150000){
+            dt.deliveryFee[1] -= dt.discountDelivery[1];
+            dt.smallDiscount = dt.finalCost * dt.discountCost[0];
+            dt.finalCost -= dt.smallDiscount + dt.deliveryFee[1];
+        }
+        if (dt.finalCost >= 150000){
+            dt.deliveryFee[1] -= dt.discountDelivery[2];
+            dt.bigDiscount = dt.finalCost * dt.discountCost[1];
+            dt.finalCost -= dt.bigDiscount;
+            dt.finalCost -= dt.deliveryFee[1];
+        }
+    }
+}
+
+void outputDeliveryFee(data& dt){
+  int minRange = 3;
+  if (dt.userRange <= minRange){
+      std::cout << "biaya ongkir = " << dt.deliveryFee[0] << std::endl;
   }
-  std::cout << "Input your choice: "; std::cin >> selectedMenu;
-  std::cout << "Input how many order: "; std::cin >> amount;
-  
-}
-
-//HITUNG TOTAL HARGA AWAL
-void RestaurantReceipts::calculatePriceBeforeDiscount(){
-  totalPrice = menuPrice[selectedMenu-1] * amount;
-}
-
-//OUTPUT PESANAN AWAL SEMENTARA
-void RestaurantReceipts::firstOrder(){
-  std::cout << "You order " << amount << " of " << menu[selectedMenu-1] << std::endl;
-  std::cout << "Total price: " << totalPrice << std::endl;
-}
-
-//SIMPAN SEMUA DATA PILIHAN AWAL USER
-void RestaurantReceipts::storedDataList(){
-  storedOrderList[count] = menu[selectedMenu-1];
-  priceBeforeDiscount[count] = totalPrice;
-  std::cout << "Your order: " << std::endl;
-  for (int i = 0; i < 5; i++){
-    std::cout << i+1 << "x| " <<  menu[i] << std::endl;
-    std::cout << "Total price: " << menuPrice[i] * amount << std::endl;
+  if (dt.userRange > minRange){
+      std::cout << "biaya ongkir = " << dt.deliveryFee[1] << std::endl;
   }
-  
 }
 
-// void RestaurantReceipts::priceDiscount(){
-//   if (totalPrice > 25000 && totalPrice <= 50000){
-//     totalPrice -= 3000;
-//   }
-//   if (totalPrice > 50000 && totalPrice <= 150000){
-//     int temp = totalPrice;
-//     temp *= 0.15;
-//     totalPrice -= temp;
-//     totalPrice -= 5000;
-//   }
-//   if (totalPrice > 150000){
-//     int temp = totalPrice;
-//     temp *= 0.35;
-//     totalPrice -= temp;
-//     totalPrice -= 8000;
-//   }
-// }
-
-// void RestaurantReceipts::customerDistance(){
-//   std::cout << "Input your distance: "; std::cin >> distance;
-//   if (distance <= 3){
-//     totalPrice += 15000;
-//   }else {
-//     totalPrice += 25000;
-//   }
-// }
+void outputStruct(data& dt){
+    std::cout << "Daftar pesanan: " << std::endl;
+    std::cout << dt.amount << "x " << dt.menuList[dt.choice-1] << std::endl;
+    std::cout << "total awal = Rp" << dt.firstCost << std::endl;
+    std::cout << "jarak rumah = " << dt.userRange << std::endl;
+    outputDeliveryFee(dt);
+    std::cout << "diskon yang didapat = Rp" << dt.smallDiscount << std::endl;
+    std::cout << "total akhir bayar = " << dt.finalCost;
+}
 
 int main(){
-  char repeatOrder = 'y';
-  RestaurantReceipts receipts;
-
-  while(repeatOrder == 'y'){
-    receipts.acceptInputUser();
-    receipts.calculatePriceBeforeDiscount();
-    receipts.firstOrder();
-    // receipts.storedDataList();
-    std::cout << "You want to order again? (y/n): "; std::cin >> repeatOrder;
-    // receipts.storedDataList();
-    if (repeatOrder == 'n'){
-      // receipts.storedDataList();
-      break;
-    }
-  }
-  // receipts.customerDistance();
-  return 0;
+    data dt;
+    outputMenuList(dt);
+    inputUserData(dt);
+    countPrice(dt);
+    checkUserRangeAndCountFinalPrice(dt);
+    outputStruct(dt);
+    return 0;
 }
