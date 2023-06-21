@@ -14,16 +14,16 @@ struct data {
 
 void outputMenuList(data& dt){
     int menuAmount = 5;
-    std::cout << "Menu Rumah Makan: " << std::endl;
+    std::cout << "Restaurant Menu : " << std::endl;
     for (int i = 0; i < menuAmount; i++){
         std::cout << i+1 << "." << dt.menuList[i] << std::endl; 
     }
 }
 
 void inputUserData(data& dt){
-    std::cout << "Masukan pilihan menu = "; std::cin >> dt.choice;
-    std::cout << "Jumlah yang diinginkan = "; std::cin >> dt.amount;
-    std::cout << "Jarak rumah = "; std::cin >> dt.userRange;
+    std::cout << "Input your menu = "; std::cin >> dt.choice;
+    std::cout << "Amount = "; std::cin >> dt.amount;
+    std::cout << "Your distance = "; std::cin >> dt.userRange;
     std::cout << std::endl;
 }
 
@@ -55,21 +55,21 @@ void checkUserRangeAndCountFinalPrice(data& dt){
 void outputDeliveryFee(data& dt){
   int minRange = 3;
   if (dt.userRange <= minRange){
-      std::cout << "biaya ongkir = " << dt.deliveryFee[0] << std::endl;
+      std::cout << "Delivery fee = " << dt.deliveryFee[0] << std::endl;
   }
   if (dt.userRange > minRange){
-      std::cout << "biaya ongkir = " << dt.deliveryFee[1] << std::endl;
+      std::cout << "Delivery fee = " << dt.deliveryFee[1] << std::endl;
   }
 }
 
 void outputStruct(data& dt){
-    std::cout << "Daftar pesanan: " << std::endl;
+    std::cout << "Receipts: " << std::endl;
     std::cout << dt.amount << "x " << dt.menuList[dt.choice-1] << std::endl;
-    std::cout << "total awal = Rp" << dt.firstCost << std::endl;
-    std::cout << "jarak rumah = " << dt.userRange << std::endl;
+    std::cout << "First cost = Rp" << dt.firstCost << std::endl;
+    std::cout << "Distance = " << dt.userRange << std::endl;
     outputDeliveryFee(dt);
-    std::cout << "diskon yang didapat = Rp" << dt.smallDiscount << std::endl;
-    std::cout << "total akhir bayar = " << dt.finalCost;
+    std::cout << "Discount = Rp" << dt.smallDiscount << std::endl;
+    std::cout << "Final cost = " << dt.finalCost;
 }
 
 int main(){
