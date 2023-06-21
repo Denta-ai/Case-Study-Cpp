@@ -1,83 +1,119 @@
 #include <iostream>
+#include <vector>
 
-struct data {
-    int choice, amount, userRange;
-    std::string menuList[5] = {"Ayam geprek : Rp 21.000", "Ayam goreng : Rp 17.000", "Udang goreng : Rp 19.000", 
-                            "Cumi goreng : 20.000", "Ayam bakar : Rp25.000"};
-    int menuPrice[5] = {21000, 17000, 19000, 20000, 25000};
-    int deliveryFee[2] = {15000,25000};
-    int discountDelivery[3] = {3000,5000,8000};
-    float discountCost[2] = {0.15,0.35};
-    int smallDiscount = 0, bigDiscount = 0;
-    int firstCost = 0, finalCost = 0;
+enum MenuChoice {
+    AYAM_GEPREK,
+    AYAM_GORENG,
+    UDANG_GORENG,
+    CUMI_GORENG,
+    AYAM_BAKAR,
+    NUM_MENU_CHOICES
 };
 
-void outputMenuList(data& dt){
-    int menuAmount = 5;
+class Menu {
+public:
+    std::string name;
+    int price;
+};
+
+class DeliveryFee {
+public:
+    int shortRange;
+    int longRange;
+};
+
+class Data {
+private:
+    int choice;                       // User's menu choice
+    int amount;                       // Amount of items
+    int userRange;                    // Distance from the restaurant
+    Menu listMenu[NUM_MENU_CHOICES];  // Array of Menu objects
+    DeliveryFee deliveryFees;         // Delivery fee options
+    int discountDelivery[3];          // Discount values for delivery
+    float discountCost[2];            // Discount percentages for cost
+    int smallDiscount;                // Discount amount
+    int bigDiscount;                  // Discount amount
+    int firstCost;                    // Initial cost before discounts
+    int finalCost;                    // Final cost after discounts
+
+public:
+    void outputListMenu();                     // Output the restaurant menu
+    void inputUserData();                      // Input user's data (choice, amount, range)
+    void countPrice();                         // Calculate initial and final cost
+    void checkUserRangeAndCountFinalPrice();    // Check user's range and apply discounts
+    void outputDeliveryFee();                   // Output the delivery fee
+    void receipts();                            // Output the receipts
+};
+
+void Data::outputListMenu() {
     std::cout << "Restaurant Menu : " << std::endl;
-    for (int i = 0; i < menuAmount; i++){
-        std::cout << i+1 << "." << dt.menuList[i] << std::endl; 
+    for (int i = 0; i < NUM_MENU_CHOICES; i++) {
+        std::cout << i + 1 << ". " << listMenu[i].name << " : Rp " << listMenu[i].price << std::endl;
     }
 }
 
-void inputUserData(data& dt){
-    std::cout << "Input your menu = "; std::cin >> dt.choice;
-    std::cout << "Amount = "; std::cin >> dt.amount;
-    std::cout << "Your distance = "; std::cin >> dt.userRange;
+void Data::inputUserData() {
+    std::cout << "Input menu = ";
+    std::cin >> choice;
+    std::cout << "Amount = ";
+    std::cin >> amount;
+    std::cout << "Distance = ";
+    std::cin >> userRange;
     std::cout << std::endl;
 }
 
-void countPrice(data& dt){
-    dt.firstCost = dt.menuPrice[dt.choice-1]*dt.amount;
-    dt.finalCost = dt.menuPrice[dt.choice-1]*dt.amount;
+void Data::countPrice() {
+    firstCost = listMenu[choice - 1].price * amount;
+    finalCost = listMenu[choice - 1].price * amount;
 }
 
-void checkUserRangeAndCountFinalPrice(data& dt){
+void Data::checkUserRangeAndCountFinalPrice() {
     int minRange = 3;
-    if (dt.userRange <= minRange){
-        dt.finalCost += dt.deliveryFee[0];
+    if (userRange <= minRange) {
+        finalCost += deliveryFees.shortRange;
     }
-    if (dt.userRange > minRange){
-        if (dt.finalCost >= 50000 && dt.finalCost < 150000){
-            dt.deliveryFee[1] -= dt.discountDelivery[1];
-            dt.smallDiscount = dt.finalCost * dt.discountCost[0];
-            dt.finalCost -= dt.smallDiscount + dt.deliveryFee[1];
+    else {
+        if (finalCost >= 50000 && finalCost < 150000) {
+            deliveryFees.longRange -= discountDelivery[1];
+            smallDiscount = finalCost * discountCost[0];
+            finalCost -= smallDiscount + deliveryFees.longRange;
         }
-        if (dt.finalCost >= 150000){
-            dt.deliveryFee[1] -= dt.discountDelivery[2];
-            dt.bigDiscount = dt.finalCost * dt.discountCost[1];
-            dt.finalCost -= dt.bigDiscount;
-            dt.finalCost -= dt.deliveryFee[1];
+        else if (finalCost >= 150000) {
+            deliveryFees.longRange -= discountDelivery[2];
+            bigDiscount = finalCost * discountCost[1];
+            finalCost -= bigDiscount;
+            finalCost -= deliveryFees.longRange;
         }
     }
 }
 
-void outputDeliveryFee(data& dt){
-  int minRange = 3;
-  if (dt.userRange <= minRange){
-      std::cout << "Delivery fee = " << dt.deliveryFee[0] << std::endl;
-  }
-  if (dt.userRange > minRange){
-      std::cout << "Delivery fee = " << dt.deliveryFee[1] << std::endl;
-  }
+void Data::outputDeliveryFee() {
+    int minRange = 3;
+    if (userRange <= minRange) {
+        std::cout << "Delivery fee = " << deliveryFees.shortRange << std::endl;
+    }
+    else {
+        std::cout << "Delivery fee = " << deliveryFees.longRange << std::endl;
+    }
 }
 
-void outputStruct(data& dt){
+void Data::receipts() {
     std::cout << "Receipts: " << std::endl;
-    std::cout << dt.amount << "x " << dt.menuList[dt.choice-1] << std::endl;
-    std::cout << "First cost = Rp" << dt.firstCost << std::endl;
-    std::cout << "Distance = " << dt.userRange << std::endl;
-    outputDeliveryFee(dt);
-    std::cout << "Discount = Rp" << dt.smallDiscount << std::endl;
-    std::cout << "Final cost = " << dt.finalCost;
+    std::cout << amount << "x " << listMenu[choice - 1].name << std::endl;
+    std::cout << "First cost = Rp " << firstCost << std::endl;
+    std::cout << "Distance = " << userRange << std::endl;
+    outputDeliveryFee();
+    std::cout << "Discount = Rp " << smallDiscount << std::endl;
+    std::cout << "Final cost = " << finalCost << std::endl;
 }
 
-int main(){
-    data dt;
-    outputMenuList(dt);
-    inputUserData(dt);
-    countPrice(dt);
-    checkUserRangeAndCountFinalPrice(dt);
-    outputStruct(dt);
+int main() {
+    Data data;
+    data.outputListMenu();
+    data.inputUserData();
+    data.countPrice();
+    data.checkUserRangeAndCountFinalPrice();
+    data.receipts();
+
     return 0;
 }
