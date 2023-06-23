@@ -1,0 +1,23 @@
+English:
+Create a program where a restaurant has the following menu:
+1. Geprek chicken : 21000
+2. Fried chicken: 17000
+3. Fried shrimp: 19000
+4. Fried squid : 20000
+5. Grilled chicken: 25000
+The restaurant provides delivery order services, for customers whose homes are less than
+3KM will be given a postage fee of 15000. Meanwhile, those that are more than 3 KM will be given a postage fee
+25000.
+The output that comes out is expected in the form of a payment slip.
+
+Indonesia:
+Buatlah program dimana sebuah rumah makan mempunyai menu sebagai berikut: 
+1. Ayam geprek : 21000 
+2. Ayam goreng : 17000 
+3. Udang goreng : 19000 
+4. Cumi goreng : 20000 
+5. Ayam bakar : 25000 
+Rumah makan tersebut menyediakan jasa delivery order, pelanggan yang jarak rumahnya kurang dari 
+3KM akan diberi biaya ongkir sebanyak 15000. Sedangkan yang lebih dari 3 KM diberi biaya ongkir 
+25000.
+Output yang keluar diharapkan dalam bentuk slip pembayaran.
