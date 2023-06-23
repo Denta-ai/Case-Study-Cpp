@@ -1,26 +1,24 @@
 Ennglish:
-Andi gets the same amount of pocket money every month. I use the pocket money for
-bought some college necessities and snacks. However, he also wanted to save some of the remaining money
-pocket that he has, although not necessarily every month.
-Andi asked his friend who studied Informatics to make an application to calculate it
-all by displaying monthly expenses, total expenses, and current savings
-This.
-Create a program with your team, applying the iterative-recursive material just now
-learned in this week's practical.
+  Andi gets the same amount of pocket money every month. I use the pocket money for
+  bought some college necessities and snacks. However, he also wanted to save some of the remaining money
+  pocket that he has, although not necessarily every month.
+  Andi asked his friend who studied Informatics to make an application to calculate it
+  all by displaying monthly expenses, total expenses, and current savings this.
+  Create a program with your team, applying the iterative-recursive material just now
+  learned in this week's practical.
 Notes :
 - Display data Iteratively
 - Using Class
 
 
 Indonesia:
-Andi mendapatkan uang saku dengan jumlah sama setiap bulannya. Ia gunakan uang saku itu untuk 
-membeli beberapa keperluan kuliah dan jajannya. Akan tetapi, ia juga ingin menabung dari sisa uang 
-saku yang ia miliki, walaupun tidak tentu setiap bulannya. 
-Andi meminta kawannya yang kuliah Informatika untuk membuatkan aplikasi untuk menghitung itu 
-semua dengan menampilkan pengeluaran tiap bulan, total pengeluaran, dan uang tabungannya saat 
-ini.
-Buatlah program dengan tim anda, dengan menerapkan materi iteratif-rekursif yang baru saja 
-dipelajari dimateri praktikum minggu ini.
+  Andi mendapatkan uang saku dengan jumlah sama setiap bulannya. Ia gunakan uang saku itu untuk 
+  membeli beberapa keperluan kuliah dan jajannya. Akan tetapi, ia juga ingin menabung dari sisa uang 
+  saku yang ia miliki, walaupun tidak tentu setiap bulannya. 
+  Andi meminta kawannya yang kuliah Informatika untuk membuatkan aplikasi untuk menghitung itu 
+  semua dengan menampilkan pengeluaran tiap bulan, total pengeluaran, dan uang tabungannya saat ini.
+  Buatlah program dengan tim anda, dengan menerapkan materi iteratif-rekursif yang baru saja 
+  dipelajari dimateri praktikum minggu ini.
 Catatan :
 - Menampilkan data secara Iteratif
 - Menggunakan Class
