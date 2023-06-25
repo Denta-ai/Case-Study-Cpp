@@ -2,7 +2,6 @@
 
 <p>Language use (INA/EN)</p>
 <p>INDONESIA-ENGLISH</p>
-<p>Difficulty: Easy-Medium</p>
 <br>
 
 English:
