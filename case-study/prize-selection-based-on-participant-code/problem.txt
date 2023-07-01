@@ -1,0 +1,34 @@
+English:
+Given a table containing lottery codes and prizes.
+=======================
+| 15 | Rice Cookers
+| 70 | 45 Inch TVs
+| 90 | 2 door refrigerator
+| 45 | iPhone 14
+=======================
+
+For example, the one selected has a participant number: AB70VA. Then take the 3rd and 4th digits of the participant's number.
+Then look in the table in the raffle code column. Then print the name of the prize.
+
+Example:
+Inputs: AB70VA
+Digits 3-4: 70
+Outputs: 45 Inch TVs
+
+
+Indonesia:
+Diberikan tabel berisi kode undian dan hadiah.
+=======================
+| 15 | Rice Cooker
+| 70 | TV 45 Inch
+| 90 | Kulkas 2 pintu
+| 45 | iPhone 14
+=======================
+
+Misalnya yang terpilih ada nomor peserta: AB70VA. Maka ambillah digit ke-3 dan 4 dari nomor peserta tersebut. 
+Lalu carilah di tabel tersebut di kolom kode undian. Lalu cetaklah nama hadiahnya.
+
+Contoh:
+Input: AB70VA
+Digit 3-4: 70
+Output: TV 45 Inch
