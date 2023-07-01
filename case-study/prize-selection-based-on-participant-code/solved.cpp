@@ -19,34 +19,44 @@ string delString(string lastSlice){
   return deletedString;
 }
 
-void findSubString(string code, string key){
+void findSubString(string code){
+  string keys[4] = {
+    "15", "70", "90", "45" 
+  };
   int codeLength = getStringLength(code);
-  int keyLength = getStringLength(key);
-  string slices[codeLength];
+  int keyLength = 2;
+  string slices[codeLength] = {""};
   string lastSlice = "";
 
-  for (int i = 0; i < codeLength; i++){
+  for (int i = 0; i < codeLength - keyLength + 1; i++){
     lastSlice += code[i];
     int lastSliceLength = getStringLength(lastSlice);
 
-    if (lastSliceLength == keyLength && lastSlice != key){
+    for (int j = 0; j < 4; j++) {
+      if (lastSliceLength == keyLength && lastSlice == keys[j]) {
+        int startIndex = i;
+        int lastIndex = i + keyLength - 1;
+        cout << keys[j] << " ditemukan pada indeks " << startIndex
+        << " - " << lastIndex << " dari string " << code << endl;
+        return;
+      }
+    }
+    if (lastSliceLength == keyLength){
       slices[i] = lastSlice;
       lastSlice = delString(lastSlice);
     }
-    if (lastSliceLength == keyLength && lastSlice == key){
-      int startIndex = (i - keyLength) + 1;
-      int lastIndex = i;
-      cout << key << " " << "ditemukan pada indeks " << startIndex << " - " << lastIndex << " dari string " << code;
-      break;
-    }
+    
   }
 }
 
 int main(){
   string code;
   string key = "70";
+  // string keys[4] = {
+  //   "15", "70", "90", "45" 
+  // };
   cout << "Input: "; cin >> code;
-  findSubString(code, key);
+  findSubString(code);
 
   return 0;
 }
