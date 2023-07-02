@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ string delString(string lastSlice){
 void findSubString(string code, string keys[], int numbKeys){
   int codeLength = getStringLength(code);
   int keyLength = getStringLength(keys[0]);
-  string slices[codeLength] = {""};
+  vector<string>slices;
   string lastSlice = "";
 
   for (int i = 0; i < codeLength - keyLength + 1; i++){
@@ -39,7 +40,7 @@ void findSubString(string code, string keys[], int numbKeys){
       }
     }
     if (lastSliceLength == keyLength){
-      slices[i] = lastSlice;
+      slices.push_back(lastSlice);
       lastSlice = delString(lastSlice);
     }
     
