@@ -20,9 +20,10 @@ string delString(string lastSlice){
   return deletedString;
 }
 
-void findSubString(string code, string keys[], int numbKeys){
+void findSubString(string code, string keys[], int numbKeys, string values[]){
   int codeLength = getStringLength(code);
   int keyLength = getStringLength(keys[0]);
+  bool found = false;
   vector<string>slices;
   string lastSlice = "";
 
@@ -30,13 +31,14 @@ void findSubString(string code, string keys[], int numbKeys){
     lastSlice += code[i];
     int lastSliceLength = getStringLength(lastSlice);
 
-    for (int j = 0; j < 4; j++) {
+    for (int j = 0; j < numbKeys; j++) {
       if (lastSliceLength == keyLength && lastSlice == keys[j]) {
         int startIndex = i;
         int lastIndex = i + keyLength - 1;
         cout << keys[j] << " ditemukan pada indeks " << startIndex
-        << " - " << lastIndex << " dari string " << code << endl;
-        break;
+        << " - " << lastIndex << " dari string " << code << " dengan isi "
+        << values[j] << endl;
+        found = true;
       }
     }
     if (lastSliceLength == keyLength){
@@ -54,8 +56,14 @@ int main(){
   string keys[4] = {
     "15", "70", "90", "45" 
   };
+
+  string values[4] = {
+    "Rice cooker", "TV 45 Inch", "Kulkas 2 pintu", "iPhone 14"
+  };
+
   int numbKeys = sizeof(keys)/sizeof(keys[0]);
-  findSubString(code, keys, numbKeys);
+
+  findSubString(code, keys, numbKeys, values);
 
   return 0;
 }
